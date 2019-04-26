@@ -1,0 +1,28 @@
+global:
+  scrape_interval:     60s
+  evaluation_interval: 60s
+  scrape_timeout: 60s
+
+scrape_configs:
+  - job_name: 'Global_node_speed'
+    static_configs:
+      - targets: ['127.0.0.1:5000']
+        labels:
+          target_name: Global_node_speed
+          country: undefinition
+  - job_name: 'Global_Api_Check'
+    metrics_path: '/ckurl/metrics'
+    static_configs:
+      - targets: ['127.0.0.1:5000']
+        labels:
+          target_name: Global_Api_Check
+          country: undefinition
+  - job_name: 'Global_File_Upload'
+    metrics_path: '/ckupload/metrics'
+    scrape_interval:     120s
+    scrape_timeout: 120s
+    static_configs:
+      - targets: ['127.0.0.1:5000']
+        labels:
+          target_name: Global_File_Upload
+          country: undefinition
